@@ -1,24 +1,24 @@
-node{
-    cleanWs()
-    try{
+node {
+    try {
         def buildNum = env.BUILD_NUMBER 
-        def branchName= env.BRANCH_NAME
+        def branchName = env.BRANCH_NAME
     
-        print buildNum
-        print branchName
+        echo "Build Number: ${buildNum}"
+        echo "Branch Name: ${branchName}"
 
-        stage('Atelier - clone '){
-        git "https://github.com/Dialsyp/Atelier.git"
+        stage('Atelier - clone') {
+            git "https://github.com/Dialsyp/Atelier.git"
         }
 
-        stage('PremiereEtape'){
+        stage('PremiereEtape') {
             sh "echo 'hello world'"
         }
-         stage('deuxiemeEtape'){
-            sh"echo 'hello world'"
+
+        stage('deuxiemeEtape') {
+            sh "echo 'hello world'"
         }
     }
-    finally{
-        cleanWs()
+    finally {
+        // cleanWs() is not needed here, as it was already called at the beginning
     }
 }
