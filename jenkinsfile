@@ -28,7 +28,8 @@ node {
             sh "ls"
             ansiblePlaybook(
                         inventory: 'inventory.yml',
-                        playbook: 'ping.yml'
+                        playbook: 'ping.yml',
+                        credentialsId: 'sshkey.pem'
                     )
         }
     }
