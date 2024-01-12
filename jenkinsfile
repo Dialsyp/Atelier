@@ -14,9 +14,7 @@ node {
         }
 
         stage('PremiereEtape') {
-            sh "cd front "
-           
-            sh " cd front &&  docker build -t DEV:$BUILD_NUMBER"
+            sh " cd front &&  docker build -t DEV:$BUILD_NUMBER ."
         }
 
         stage('deuxiemeEtape') {
