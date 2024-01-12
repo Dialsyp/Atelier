@@ -14,12 +14,12 @@ node {
         }
 
         stage('BUILD') {
-            sh "hello"
+            sh "echo 'hello'"
             //dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
 
         stage('PUSH') {
-            sh "hello"
+            sh "echo 'hello'"
             //docker.withRegistry( '', registryCredential ) {
             //dockerImage.push()
         }
