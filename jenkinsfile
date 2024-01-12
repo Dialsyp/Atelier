@@ -7,7 +7,9 @@ node {
         echo "Branch Name: ${branchName}"
 
         stage('Atelier - clone') {
-            git "https://github.com/Dialsyp/Atelier.git"
+            git branch: 'DEV',
+                        credentialsId: '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',
+                        url: 'https://github.com/Dialsyp/Atelier.git'
         }
 
         stage('PremiereEtape') {
