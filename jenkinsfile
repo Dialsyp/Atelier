@@ -23,6 +23,7 @@ node {
             docker.withRegistry( '', registryCredential ) {
             dockerImage.push()
         }
+        }
     }
     finally {
         // cleanWs() is not needed here, as it was already called at the beginning
