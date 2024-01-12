@@ -9,7 +9,8 @@ node {
         stage('Atelier - clone') {
             git branch: 'DEV',
                         credentialsId: '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',
-                        url: 'https://github.com/Dialsyp/Atelier.git'
+                        url: 'https://github.com/Dialsyp/Atelier.git',
+            sh "ls"
         }
 
         stage('PremiereEtape') {
