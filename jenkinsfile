@@ -25,7 +25,7 @@ node {
         }
         stage('ANSIBLE - Deploy'){
             git branch: 'main', url: 'https://github.com/Dialsyp/ansible.git'
-            sh "ls"
+            sh "sudo apt-get install sshpass && ls"
             ansiblePlaybook(
                         inventory: 'inventory.yml',
                         playbook: 'ping.yml'
