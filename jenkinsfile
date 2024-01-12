@@ -1,59 +1,24 @@
-pipeline {
-    agent any
+node{
+    cleanWs()
+    try{
+        def buildNum = env.BUILD_NUMBER 
+        def branchName= env.BRANCH_NAME
     
-    environment {
-        // Define the Node.js installation configured in Jenkins
-        NODEJS_HOME = tool 'Node.js'
-        PATH = "${NODEJS_HOME}/bin:${env.PATH}"
-    }
+        print buildNum
+        print branchName
 
-    stages {
-        stage('Checkout') {
-            
-                // Checkout your source code from version control
-                checkout scm
-            
+        stage('Atelier - clone '){
+        git "https://github.com/Dialsyp/Atelier.git"
         }
 
-        stage('Install Dependencies') {
-            
-                // Install Node.js dependencies using npm
-                sh 'npm install'
-            
+        stage('PremiereEtape'){
+            sh "echo 'hello world'"
         }
-
-        stage('Run Unit Tests') {
-            
-                // Run unit tests using npm test (customize as needed)
-                sh 'npm test'
-            
-        }
-
-        stage('Run SonarQube Analysis') {
-           
-                // Run SonarQube analysis
-                withSonarQubeEnv('Your_SonarQube_Environment_Name') {
-                    sh 'npm run sonar-scanner'
-                }
-            
-        }
-
-        stage('Deploy') {
-           
-                // Add deployment steps if needed
-                // e.g., deploying to a server, pushing to a registry, etc.
-           
+         stage('deuxiemeEtape'){
+            sh"echo 'hello world'"
         }
     }
-
-    post {
-        success {
-            // Actions to be taken if the pipeline is successful
-            echo 'Pipeline successful!'
-        }
-        failure {
-            // Actions to be taken if the pipeline fails
-            echo 'Pipeline failed!'
-        }
+    finally{
+        cleanWs()
     }
 }
