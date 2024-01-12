@@ -27,7 +27,7 @@ node {
             git branch: 'main', url: 'https://github.com/Dialsyp/ansible.git'
             sh "ls"
             ansiblePlaybook(
-                        inventory: 'inventory.ini',
+                        inventory: 'inventory.yml',
                         playbook: 'ping.yml'
                     )
         }
