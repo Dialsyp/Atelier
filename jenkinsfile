@@ -13,15 +13,23 @@ node {
                         url: 'https://github.com/Dialsyp/Atelier.git'
         }
 
-        stage('TEST') {
-            sh "echo 'Hello-World ici je fait mes testes unitaire pour la partie DEV'"
+        stage('BUILD') {
+            sh "hello"
+            //dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
 
-        stage('PACK') {
-            sh "echo 'Hello-World ici je fait Mon packaging pour la partie DEV'"
+        stage('PUSH') {
+            sh "hello"
+            //docker.withRegistry( '', registryCredential ) {
+            //dockerImage.push()
         }
         stage('ANSIBLE - Deploy'){
-            sh "echo 'Hello-World ici je fait Mon deployment pour la partie DEV'"
+            git branch: 'main', url: 'https://github.com/Dialsyp/ansible.git'
+            sh "ls"
+            ansiblePlaybook(
+                        inventory: 'inventory.ini',
+                        playbook: 'ping.yml'
+                    )
         }
     }
     finally {
