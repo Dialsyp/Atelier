@@ -13,21 +13,15 @@ node {
                         url: 'https://github.com/Dialsyp/Atelier.git'
         }
 
-        stage('PremiereEtape') {
-            sh "cd front "
-            dir('front') {
-                sh "ls"
-                   dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                }
+        stage('TEST') {
+            sh "echo 'Hello-World ici je fait mes testes unitaire pour la partie DEV'"
         }
 
-        stage('deuxiemeEtape') {
-            sh "echo 'hello world'"
-            dir('front') {
-            docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()
-                }
-            }
+        stage('PACK') {
+            sh "echo 'Hello-World ici je fait Mon packaging pour la partie DEV'"
+        }
+        stage('ANSIBLE - Deploy'){
+            sh "echo 'Hello-World ici je fait Mon deployment pour la partie DEV'"
         }
     }
     finally {
