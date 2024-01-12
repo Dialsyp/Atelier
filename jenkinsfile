@@ -13,7 +13,7 @@ node {
         }
 
         stage('PremiereEtape') {
-            sh "cd front"
+            sh "cd front && ls"
             sh "ls"
         }
 
